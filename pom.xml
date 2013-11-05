@@ -409,6 +409,7 @@
 				<artifactId>cobertura-maven-plugin</artifactId>
 				<version>${cobertura.version}</version>
 				<configuration>
+				    <format>xml</format>
 					<instrumentation>
 						<!-- exclude the AppClient and the generated XML schema beans from 
 							code coverage -->

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
+
+	<!-- Figaro TS1 Connection Factory -->
+	<jee:jndi-lookup id="ts1ConnectionFactory" jndi-name="eis/figaro-ts1"/>
+ 	<jee:jndi-lookup id="td1ConnectionFactory" jndi-name="eis/figaro-td1"/>
+	<jee:jndi-lookup id="ca1ConnectionFactory" jndi-name="eis/figaro-ca1"/>
+	<jee:jndi-lookup id="dealserverConnectionFactory" jndi-name="eis/dealserver"/>
+	<jee:jndi-lookup id="crmConnectionFactory" jndi-name="eis/figaro-crm"/>
+	<jee:jndi-lookup id="kycConnectionFactory" jndi-name="eis/figaro-kyc"/>
+
+</beans>

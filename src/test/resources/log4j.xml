@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+ 
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- 
+            <param name="ConversionPattern"
+                value="[%d{ISO8601}] %-5p [%c] %m %n" />
+            -->
+            <param name="ConversionPattern" value="%-5p [%c] %m %n" />
+        </layout>
+    </appender>
+     
+    <appender name="STDERR" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.err" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="[%d{ISO8601}] %-5p [%c] %m %n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR" />
+            <param name="LevelMax" value="FATAL" />
+        </filter>
+    </appender>
+ 
+    <!--  log api classes                        -->
+    <logger name="jhc.figaro.api.resources.PeopleResourceController" additivity="false">
+        <level value="TRACE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="jhc.figaro.api.resources.AddressResourceController" additivity="false">
+        <level value="TRACE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <!--  log integration test classes                        -->
+    <logger name="integration.jhc" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <!--  log Hibernate classes                        -->
+    <!-- 
+    <logger name="org.hibernate.type" additivity="false">
+        <level value="TRACE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+     -->
+    
+    <!--  log interceptor                
+    <logger name="org.springframework.aop.interceptor.CustomizableTraceInterceptor" additivity="false">
+        <level value="TRACE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+           -->
+         
+    <!-- ** -->
+     
+    <root>
+        <level value="ERROR" />
+        <appender-ref ref="STDERR" />
+    </root>
+ 
+ 
+</log4j:configuration>

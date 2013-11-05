@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- general shared beans -->
+	<bean id="transactionContextManager" class="org.jencks.factory.TransactionContextManagerFactoryBean"/>
+	<bean id="poolAttributes" class="org.jencks.factory.SinglePoolFactoryBean">
+		<property name="minSize" value="${jets.pool.min.size}"/>
+		<property name="maxSize" value="${jets.pool.max.size}"/>
+		<property name="blockingTimeoutMilliseconds" value="${jets.pool.blocking.timeout}"/>
+		<property name="idleTimeoutMinutes" value="${jets.pool.idle.timeout}"/>
+		<property name="matchOne" value="false"/>
+		<property name="matchAll" value="true"/>
+		<property name="selectOneAssumeMatch" value="false"/>
+	</bean>
+	
+	<!-- Connection Pool Managers -->
+	<bean id="ts1ConnectionManager" class="org.jencks.factory.ConnectionManagerFactoryBean">
+		<property name="poolingSupport" ref="poolAttributes"/>
+		<property name="transactionContextManager" ref="transactionContextManager"/>
+	</bean>
+
+	<!-- Portfolio Management -->
+	<bean id="ao1ConnectionManager" class="org.jencks.factory.ConnectionManagerFactoryBean">
+		<property name="poolingSupport" ref="poolAttributes"/>
+		<property name="transactionContextManager" ref="transactionContextManager"/>
+	</bean>
+	
+	<bean id="td1ConnectionManager" class="org.jencks.factory.ConnectionManagerFactoryBean">
+		<property name="poolingSupport" ref="poolAttributes"/>
+		<property name="transactionContextManager" ref="transactionContextManager"/>
+	</bean>
+		
+	<bean id="dealserverConnectionManager" class="org.jencks.factory.ConnectionManagerFactoryBean">
+		<property name="poolingSupport" ref="poolAttributes" />
+		<property name="transactionContextManager" ref="transactionContextManager" />
+	</bean>
+	
+	<bean id="crmConnectionManager" class="org.jencks.factory.ConnectionManagerFactoryBean">
+		<property name="poolingSupport" ref="poolAttributes" />
+		<property name="transactionContextManager" ref="transactionContextManager" />
+	</bean>
+
+	<bean id="ca1ConnectionManager" class="org.jencks.factory.ConnectionManagerFactoryBean">
+		<property name="poolingSupport" ref="poolAttributes" />
+		<property name="transactionContextManager" ref="transactionContextManager" />
+	</bean>
+	
+    <bean id="kycdvyConnectionManager" class="org.jencks.factory.ConnectionManagerFactoryBean">
+		<property name="poolingSupport" ref="poolAttributes"/>
+		<property name="transactionContextManager" ref="transactionContextManager"/>
+	</bean>
+
+	<!-- Connection Factories -->
+	<bean id="ts1ConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<bean class="org.springframework.jca.support.LocalConnectionFactoryBean">
+				<property name="connectionManager" ref="ts1ConnectionManager" />
+				<property name="managedConnectionFactory">
+					<bean class="jhc.connector.figaro.spi.FigaroManagedConnectionFactory">
+						<property name="serverAddresses" value="${jets.ts1.connection.addresses}" />
+						<property name="userName" value="${jets.ts1.connection.username}" />
+						<property name="password" value="${jets.ts1.connection.password}" />
+						<property name="socketTimeout" value="100000" />
+						<property name="testIntegrityTimeout" value="600000" />
+						<property name="testIntegrityInterval" value="600000" />
+						<property name="library" value="${jets.ts1.connection.library}" />
+						<property name="program" value="${jets.ts1.connection.program}" />
+						<property name="system" value="${jets.ts1.connection.system}" />
+						<property name="environment" value="*USER" />
+						<property name="environmentLibrary" value="" />
+						<property name="wakeupTransaction" value="OAW" />
+						<property name="wakeupConfirmation" value="" />
+						<property name="noEnvironmentManager" value="FALSE" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="ao1ConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<bean class="org.springframework.jca.support.LocalConnectionFactoryBean">
+				<property name="connectionManager" ref="ao1ConnectionManager" />
+				<property name="managedConnectionFactory">
+					<bean class="jhc.connector.figaro.spi.FigaroManagedConnectionFactory">
+						<property name="serverAddresses" value="${jets.ao1.connection.addresses}" />
+						<property name="userName" value="${jets.ao1.connection.username}" />
+						<property name="password" value="${jets.ao1.connection.password}" />
+						<property name="socketTimeout" value="200000" />
+						<property name="testIntegrityTimeout" value="600000" />
+						<property name="testIntegrityInterval" value="600000" />
+						<property name="library" value="${jets.ao1.connection.library}" />
+						<property name="program" value="${jets.ao1.connection.program}" />
+						<property name="system" value="${jets.ao1.connection.system}" />
+						<property name="environment" value="*USER" />
+						<property name="environmentLibrary" value="" />
+						<property name="wakeupTransaction" value="#KA" />
+						<property name="wakeupConfirmation" value="" />
+						<property name="noEnvironmentManager" value="FALSE" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="td1ConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<bean class="org.springframework.jca.support.LocalConnectionFactoryBean">
+				<property name="connectionManager" ref="td1ConnectionManager" />
+				<property name="managedConnectionFactory">
+					<bean class="jhc.connector.figaro.spi.FigaroManagedConnectionFactory">
+						<property name="serverAddresses" value="${jets.td1.connection.addresses}" />
+						<property name="userName" value="${jets.td1.connection.username}" />
+						<property name="password" value="${jets.td1.connection.password}" />
+						<property name="socketTimeout" value="100000" />
+						<property name="testIntegrityTimeout" value="600000" />
+						<property name="testIntegrityInterval" value="600000" />
+						<property name="library" value="${jets.td1.connection.library}" />
+						<property name="program" value="${jets.td1.connection.program}" />
+						<property name="system" value="${jets.td1.connection.system}" />
+						<property name="environment" value="*USER" />
+						<property name="environmentLibrary" value="" />
+						<property name="wakeupTransaction" value="IW1" />
+						<property name="wakeupConfirmation" value="" />
+						<property name="noEnvironmentManager" value="FALSE" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="ca1ConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<bean class="org.springframework.jca.support.LocalConnectionFactoryBean">
+				<property name="connectionManager" ref="ca1ConnectionManager"/>
+				<property name="managedConnectionFactory">
+					<bean class="jhc.connector.figaro.spi.FigaroManagedConnectionFactory">
+ 						<property name="serverAddresses" value="${jets.ca1.connection.addresses}"/>
+						<property name="userName" value="${jets.ca1.connection.username}"/>
+						<property name="password" value="${jets.ca1.connection.password}"/>
+						<property name="socketTimeout" value="100000"/>
+						<property name="testIntegrityTimeout" value="600000"/>
+						<property name="testIntegrityInterval" value="600000"/>
+						<property name="library" value="${jets.ca1.connection.library}" />
+						<property name="program" value="${jets.ca1.connection.program}" />
+						<property name="system" value="${jets.ca1.connection.system}" />
+						<property name="environment" value="*USER"/>
+						<property name="environmentLibrary" value=""/>
+						<property name="wakeupTransaction" value="CLW"/>
+						<property name="wakeupConfirmation" value=""/>
+						<property name="noEnvironmentManager" value="FALSE"/>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="kycdvyConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<bean class="org.springframework.jca.support.LocalConnectionFactoryBean">
+				<property name="connectionManager" ref="kycdvyConnectionManager"/>
+				<property name="managedConnectionFactory">
+					<bean class="jhc.connector.figaro.spi.FigaroManagedConnectionFactory">
+						<property name="serverAddresses" value="${jets.kycdvy.connection.addresses}"/>
+						<property name="userName" value="${jets.kycdvy.connection.username}" />
+						<property name="password" value="${jets.kycdvy.connection.password}" />
+						<property name="socketTimeout" value="100000"/>
+						<property name="testIntegrityTimeout" value="600000"/>
+						<property name="testIntegrityInterval" value="600000"/>
+						<!-- <property name="library" value="F63FIGARO"/>-->
+						<property name="library" value="${jets.kycdvy.connection.library}" />
+						<property name="program" value="${jets.kycdvy.connection.program}" />
+						<property name="system" value="${jets.kycdvy.connection.system}" />
+						<property name="environment" value="*USER"/>
+						<property name="environmentLibrary" value=""/>
+						<!-- <property name="environmentLibrary" value="F63HOLDTST"/>-->
+						<property name="wakeupTransaction" value="K3J"/>
+						<property name="wakeupConfirmation" value=""/>
+						<property name="noEnvironmentManager" value="FALSE"/>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="dealserverConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<bean class="org.springframework.jca.support.LocalConnectionFactoryBean">
+				<property name="connectionManager" ref="dealserverConnectionManager" />
+				<property name="managedConnectionFactory">
+					<bean class="jhc.connector.dealserver.spi.DealServerManagedConnectionFactory">
+						<property name="serverAddresses" value="${jets.deal.connection.addresses}" />
+						<property name="participantCode" value="ICV" />
+						<property name="marketMechanism" value="AB" />
+						<property name="dealerCapacity" value="A" />
+						<property name="singleFillIndicator" value="Y" />
+						<property name="socketTimeout" value="${jets.deal.connection.timeout}" />
+						<property name="testIntegrityTimeout" value="${jets.deal.connection.test.timeout}" />
+						<property name="testIntegrityInterval" value="${jets.deal.connection.test.interval}" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="ccmConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<bean class="org.springframework.jca.support.LocalConnectionFactoryBean">
+				<property name="connectionManager" ref="crmConnectionManager" />
+				<property name="managedConnectionFactory">
+					<bean class="jhc.connector.figaro.spi.FigaroManagedConnectionFactory">
+						<property name="serverAddresses" value="${jets.ccm.connection.addresses}" />
+						<property name="userName" value="${jets.ccm.connection.username}" />
+						<property name="password" value="${jets.ccm.connection.password}" />
+						<property name="socketTimeout" value="100000" />
+						<property name="testIntegrityTimeout" value="600000" />
+						<property name="testIntegrityInterval" value="600000" />
+						<property name="library" value="${jets.ccm.connection.library}" />
+						<property name="program" value="${jets.ccm.connection.program}" />
+						<property name="system" value="${jets.ccm.connection.system}" />
+						<property name="environment" value="*USER" />
+						<property name="environmentLibrary" value="" />
+						<property name="wakeupTransaction" value="OAW" />
+						<property name="wakeupConfirmation" value="" />
+						<property name="noEnvironmentManager" value="FALSE" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="crmConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<bean class="org.springframework.jca.support.LocalConnectionFactoryBean">
+				<property name="connectionManager" ref="crmConnectionManager" />
+				<property name="managedConnectionFactory">
+					<bean class="jhc.connector.figaro.spi.FigaroManagedConnectionFactory">
+						<property name="serverAddresses" value="${jets.crm.connection.addresses}" />
+						<property name="userName" value="${jets.crm.connection.username}" />
+						<property name="password" value="${jets.crm.connection.password}" />
+						<property name="socketTimeout" value="100000" />
+						<property name="testIntegrityTimeout" value="600000" />
+						<property name="testIntegrityInterval" value="600000" />
+						<property name="library" value="${jets.crm.connection.library}" />
+						<property name="program" value="${jets.crm.connection.program}" />
+						<property name="system" value="${jets.crm.connection.system}" />
+						<property name="environment" value="*USER" />
+						<property name="environmentLibrary" value="" />
+						<property name="wakeupTransaction" value="OAW" />
+						<property name="wakeupConfirmation" value="" />
+						<property name="noEnvironmentManager" value="FALSE" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+
+	
+	<bean id="liveSnapshotConnectionManager" class="org.jencks.factory.ConnectionManagerFactoryBean">
+		<property name="poolingSupport" ref="poolAttributes"/>
+		<property name="transactionContextManager" ref="transactionContextManager"/>
+	</bean>
+	<bean id="liveSnapshotConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<bean class="org.springframework.jca.support.LocalConnectionFactoryBean">
+				<property name="connectionManager" ref="liveSnapshotConnectionManager"/>
+				<property name="managedConnectionFactory">
+					<bean class="jhc.connector.pge.spi.PGEManagedConnectionFactory">
+						<property name="serverAddresses" value="jets.snapshot.live.connection.addresses"/>
+						<property name="socketTimeout" value="${jets.snapshot.socketTimeout}"/>
+						<property name="testIntegrityTimeout" value="${jets.snapshot.testIntegrityTimeout}"/>
+						<property name="testIntegrityInterval" value="${jets.snapshot.testIntegrityInterval}"/>
+						<property name="cacheable" value="false"/>
+						<property name="cacheTimeout" value="0"/>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="delayedSnapshotConnectionManager" class="org.jencks.factory.ConnectionManagerFactoryBean">
+		<property name="poolingSupport" ref="poolAttributes"/>
+		<property name="transactionContextManager" ref="transactionContextManager"/>
+	</bean>
+	<bean id="delayedSnapshotConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter">
+		<property name="targetConnectionFactory">
+			<bean class="org.springframework.jca.support.LocalConnectionFactoryBean">
+				<property name="connectionManager" ref="delayedSnapshotConnectionManager"/>
+				<property name="managedConnectionFactory">
+					<bean class="jhc.connector.pge.spi.PGEManagedConnectionFactory">
+						<property name="serverAddresses" value="${jets.snapshot.delayed.connection.addresses}"/>
+						<property name="socketTimeout" value="${jets.snapshot.socketTimeout}"/>
+						<property name="testIntegrityTimeout" value="${jets.snapshot.testIntegrityTimeout}"/>
+						<property name="testIntegrityInterval" value="${jets.snapshot.testIntegrityInterval}"/>
+						<property name="cacheable" value="false"/>
+						<property name="cacheTimeout" value="0"/>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<PERSON UECODE="A00001" UENAME="MR 'ARIZ ADAMS TEST" UEEML="kevin.parker@jhc.co.uk" />
+	<PERSON UECODE="A00002" UENAME="DUMMY NAME2" UEEML="dummy.name2@jhc.co.uk" />
+	<PERSON UECODE="A00011" UENAME="DUMMY NAME11" UEEML="dummy.name11@jhc.co.uk" />
+	<PERSON UECODE="A00005" UENAME="DUMMY NAME5" UEEML="dummy.name5@jhc.co.uk" />
+	<PERSON UECODE="A00014" UENAME="DUMMY NAME14" UEEML="dummy.name14@jhc.co.uk" />
+	<PERSON UECODE="A00020" UENAME="DUMMY NAME20" UEEML="dummy.name20@jhc.co.uk" />
+	<PERSON UECODE="A00003" UENAME="DUMMY NAME3" UEEML="dummy.name3@jhc.co.uk" />
+	<PERSON UECODE="A00004" UENAME="DUMMY NAME4" UEEML="dummy.name4@jhc.co.uk" />
+	<PERSON UECODE="A00021" UENAME="DUMMY NAME21" UEEML="dummy.name21@jhc.co.uk" />
+	<PERSON UECODE="A00022" UENAME="DUMMY NAME22" UEEML="dummy.name22@jhc.co.uk" />
+	<PERSON UECODE="A00023" UENAME="DUMMY NAME23" UEEML="dummy.name23@jhc.co.uk" />
+	<PERSON UECODE="A00007" UENAME="DUMMY NAME7" UEEML="dummy.name7@jhc.co.uk" />
+	<PERSON UECODE="A00006" UENAME="DUMMY NAME6" UEEML="dummy.name6@jhc.co.uk" />
+	<PERSON UECODE="A00008" UENAME="DUMMY NAME8" UEEML="dummy.name8@jhc.co.uk" />
+	<PERSON UECODE="A00010" UENAME="DUMMY NAME10" UEEML="dummy.name10@jhc.co.uk" />
+	<PERSON UECODE="A00013" UENAME="DUMMY NAME13" UEEML="dummy.name13@jhc.co.uk" />
+	<PERSON UECODE="A00012" UENAME="DUMMY NAME12" UEEML="dummy.name12@jhc.co.uk" />
+	<PERSON UECODE="A00009" UENAME="DUMMY NAME9" UEEML="dummy.name9@jhc.co.uk" />
+	<PERSON UECODE="A00017" UENAME="DUMMY NAME17" UEEML="dummy.name17@jhc.co.uk" />
+	<PERSON UECODE="A00018" UENAME="DUMMY NAME18" UEEML="dummy.name18@jhc.co.uk" />
+	<PERSON UECODE="A00019" UENAME="DUMMY NAME19" UEEML="dummy.name19@jhc.co.uk" />
+	<PERSON UECODE="A00024" UENAME="DUMMY NAME24" UEEML="dummy.name24@jhc.co.uk" />
+	<PERSON UECODE="A00025" UENAME="DUMMY NAME25" UEEML="dummy.name25@jhc.co.uk" />
+	<PERSON UECODE="A00026" UENAME="DUMMY NAME26" UEEML="dummy.name26@jhc.co.uk" />
+	<PERSON UECODE="A00027" UENAME="DUMMY NAME27" UEEML="dummy.name27@jhc.co.uk" />
+	<PERSON UECODE="A00015" UENAME="DUMMY NAME15" UEEML="dummy.name15@jhc.co.uk" />
+	<PERSON UECODE="A00016" UENAME="DUMMY NAME16" UEEML="dummy.name16@jhc.co.uk" />
+	<PERSON UECODE="A00028" UENAME="DUMMY NAME28" UEEML="dummy.name28@jhc.co.uk" />
+	<PERSON UECODE="A00029" UENAME="DUMMY NAME29" UEEML="dummy.name29@jhc.co.uk" />
+	<PERSON UECODE="A00030" UENAME="DUMMY NAME30" UEEML="dummy.name30@jhc.co.uk" />
+	<PERSON UECODE="A01345" UENAME="MR FINTAN BARNES TEST" UEEML="fintan.barnes@jhc.co.uk" />
+	<PERSON UECODE="A01346" UENAME="MR DOODAH BARNES TEST" UEEML="doodah.barnes@jhc.co.uk" />
+	<PERSON UECODE="A01347" UENAME="MR WHO BARNES TEST" UEEML="who.barnes@jhc.co.uk" />
+	
+	<!-- Address details -->
+	<ADDRESS ID="1" LINE1="St Nicholas Building" LINE2="St Nicholas Street" CITY="Newcastle Upon Tyne" POSTCODE="NE1 1TH" PERSON_CODE="A00001"/> 
+	<ADDRESS ID="2" LINE1="3 More London" LINE2="Riverside" CITY="London" POSTCODE="SE1 2RE" PERSON_CODE="A00001"/> 
+	<ADDRESS ID="3" LINE1="28-34 Clayton Street"  CITY="Newcastle Upon Tyne" POSTCODE="NE1 5PF" PERSON_CODE="A01345"/> 
+</dataset>

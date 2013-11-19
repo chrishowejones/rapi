@@ -44,7 +44,7 @@ public class FigaroJAXBContextProvider implements ContextResolver<JAXBContext> {
      * @see javax.ws.rs.ext.ContextResolver#getContext(java.lang.Class)
      */
     @Override
-    public JAXBContext getContext(Class<?> type) {
+    public JAXBContext getContext(final Class<?> type) {
         if (LOG.isDebugEnabled()) {
             LOG.debug("Getting context for type: " + type.getName());
         }
